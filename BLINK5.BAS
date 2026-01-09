@@ -2,7 +2,7 @@
 ' PD 1988 by Marco da Venezia
 ' Esempi di lampeggio del testo in modalita' grafica
 ' per sfondo nero (non preserva i pixel sottostanti,
-' vedi BLINK6.BAS per GET e PUT)
+' vedi BLINK6.BAS per preservarli con GET e PUT)
 
 SCREEN 12 ' VGA 640x480
 
@@ -73,4 +73,5 @@ DO
    IF k$ = CHR$(27) THEN END
    IF k$ = CHR$(13) THEN RETURN
 LOOP
+
 
