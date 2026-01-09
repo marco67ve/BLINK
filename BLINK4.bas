@@ -10,7 +10,6 @@ DECLARE SUB Riempimento ()
 
 DEF SEG = &HB800
 
-CLS
 Riempimento
 
 mex$ = "Premi un tasto per continuare"
@@ -26,7 +25,7 @@ END
 
 '---------------------------------------------------------------------------
 ' Nota tecnica:
-' L’indirizzo video parte da &HB800 per la pagina 0 in modalità testo 80x25.
+' LÃ†indirizzo video parte da &HB800 per la pagina 0 in modalitÎ± testo 80x25.
 ' Ogni cella video = 2 byte:
 '   byte 0: codice ASCII del carattere
 '   byte 1: attributo colore (4 bit testo, 3 sfondo, 1 blink)
@@ -69,6 +68,7 @@ SUB Messaggio (mex$, riga, daCol, coloreTesto, coloreSfondo)
 END SUB
 
 SUB Riempimento
+    CLS
     RANDOMIZE TIMER
     FOR r = 1 TO 25
         FOR c = 1 TO 80
@@ -81,4 +81,3 @@ SUB Riempimento
         NEXT
     NEXT
 END SUB
-
