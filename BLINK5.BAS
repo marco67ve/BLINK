@@ -1,6 +1,8 @@
-' BLINKMEX.BAS
+' BLINK5.BAS
 ' PD 1988 by Marco da Venezia
 ' Esempi di lampeggio del testo in modalita' grafica
+' per sfondo nero (non preserva i pixel sottostanti,
+' vedi BLINK6.BAS per GET e PUT)
 
 SCREEN 12 ' VGA 640x480
 
@@ -11,11 +13,11 @@ GOSUB 4 '   ''   4
 
 END
 
-1 ' Lampeggio con sleep, due colori impostabili (eg. giallo e bianco)
+1 ' Lampeggio con sleep, due colori impostabili (eg. rosso e verde)
 mex$ = " * Esc: esci - Enter: riavvia * "
 row = 15: col = 25
 DO
-   IF c = 7 THEN c = 14 ELSE c = 7 ' 14 giallo e 7 bianco
+   IF c = 10 THEN c = 12 ELSE c = 10
    COLOR c: LOCATE row, col: PRINT mex$;
    SLEEP (1) ' pausa di un secondo
    k$ = INKEY$
@@ -41,11 +43,12 @@ LOOP
 mex$ = " * Esc: esci - Enter: riavvia * "
 row = 15: col = 25
 sec! = .3
+c = 0
 COLOR 8: LOCATE row, col: PRINT mex$ ' colore 8 non usato per altri pixel
 DO
-   PALETTE 8, 32 + 256 * 32 + 65536 * 32 ' RGB, accende il colore 8 come bianco in 32 ad intensita' media
-   t! = TIMER: WHILE TIMER - t! < sec!: WEND
-   PALETTE 8, 0 ' spegne il colore 8
+   ' c accende/spegne il colore 8 come bianco in 32 ad intensita' media
+   IF c = 0 THEN c = 32 + 256 * 32 + 65536 * 32 ELSE c = 0
+   PALETTE 8, c
    t! = TIMER: WHILE TIMER - t! < sec!: WEND
    k$ = INKEY$
    IF k$ = CHR$(27) THEN END
@@ -56,15 +59,15 @@ LOOP
 mex$ = " * Esc: esci - Enter: riavvia * "
 row = 15: col = 25
 sec! = .5
+c = 0
 COLOR 8: LOCATE row, col: PRINT mex$
 RANDOMIZE TIMER
 DO
    r = INT((63 * RND) + 1)
    g = INT((63 * RND) + 1)
    b = INT((63 * RND) + 1)
-   PALETTE 8, r + 256 * g + 65536 * b
-   t! = TIMER: WHILE TIMER - t! < sec!: WEND
-   PALETTE 8, 0
+   IF c = 0 THEN c = r + 256 * g + 65536 * b ELSE c = 0
+   PALETTE 8, c
    t! = TIMER: WHILE TIMER - t! < sec!: WEND
    k$ = INKEY$
    IF k$ = CHR$(27) THEN END
