@@ -2,7 +2,7 @@
 ' PD 1988 by Marco da Venezia
 ' Esempi di lampeggio del testo in modalita' grafica
 ' per sfondo nero (non preserva i pixel sottostanti,
-' vedi BLINK6.BAS per preservarli con GET e PUT)
+' vedi BLINK6.BAS per GET e PUT)
 
 SCREEN 12 ' VGA 640x480
 
@@ -33,7 +33,7 @@ c = 0
 DO
    IF c = 0 THEN c = 14 ELSE c = 0 ' 14 giallo e 0 nero
    COLOR c: LOCATE row, col: PRINT mex$;
-   t! = TIMER: WHILE TIMER - t! < sec!: WEND
+   t! = TIMER: WHILE TIMER < t! + sec!: WEND
    k$ = INKEY$
    IF k$ = CHR$(27) THEN END
    IF k$ = CHR$(13) THEN RETURN
@@ -49,7 +49,7 @@ DO
    ' c accende/spegne il colore 8 come bianco in 32 ad intensita' media
    IF c = 0 THEN c = 32 + 256 * 32 + 65536 * 32 ELSE c = 0
    PALETTE 8, c
-   t! = TIMER: WHILE TIMER - t! < sec!: WEND
+   t! = TIMER: WHILE TIMER < t! + sec!: WEND
    k$ = INKEY$
    IF k$ = CHR$(27) THEN END
    IF k$ = CHR$(13) THEN RETURN
@@ -68,10 +68,8 @@ DO
    b = INT((63 * RND) + 1)
    IF c = 0 THEN c = r + 256 * g + 65536 * b ELSE c = 0
    PALETTE 8, c
-   t! = TIMER: WHILE TIMER - t! < sec!: WEND
+   t! = TIMER: WHILE TIMER < t! + sec!: WEND
    k$ = INKEY$
    IF k$ = CHR$(27) THEN END
    IF k$ = CHR$(13) THEN RETURN
 LOOP
-
-
