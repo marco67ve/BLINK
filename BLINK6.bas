@@ -1,6 +1,6 @@
 ' BLINK6.BAS
 ' PD 1988 by Marco da Venezia
-' Lampeggio del testo in modalit… grafica
+' Lampeggio del testo in modalitÃ  grafica
 ' Preserva i pixel sottostanti
 
 DECLARE SUB BlinkMessage (riga!, colonna!, testo$)
@@ -41,7 +41,7 @@ SUB BlinkMessage (riga, colonna, testo$)
 
 	DO
 		IF stato = 0 THEN stato = 1 ELSE stato = 0
-		t! = TIMER: WHILE TIMER - t! < .5: WEND
+		t! = TIMER: WHILE TIMER < t! + .5: WEND
 		k$ = INKEY$
 		IF k$ <> "" THEN EXIT DO
 		IF stato = 1 THEN
@@ -54,4 +54,3 @@ SUB BlinkMessage (riga, colonna, testo$)
 	PUT (x0, y0), area, PSET ' Ripristina definitivamente
 
 END SUB
-
