@@ -38,7 +38,7 @@ SUB Messaggio (mex$, riga, daColonna, aColonna, coloreTesto, coloreSfondo)
             COLOR coloreTesto, coloreSfondo
             LOCATE riga, daColonna, 0: PRINT s$;
         END IF
-        t = TIMER: WHILE TIMER - t < .5: WEND
+        t = TIMER: WHILE TIMER < t + .5: WEND
     LOOP WHILE INKEY$ = ""
 END SUB
 
@@ -54,4 +54,3 @@ SUB Riempimento
         NEXT
     NEXT
 END SUB
-
