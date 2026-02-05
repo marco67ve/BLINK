@@ -63,7 +63,7 @@ SUB Messaggio (mex$, riga, daCol, coloreTesto, coloreSfondo)
                 POKE addr + 1, original(i * 2 + 2)
             NEXT
         END IF
-        t = TIMER: WHILE TIMER - t < .5: WEND
+        t = TIMER: WHILE TIMER < t + .5: WEND
     LOOP WHILE INKEY$ = ""
 END SUB
 
@@ -81,3 +81,4 @@ SUB Riempimento
         NEXT
     NEXT
 END SUB
+
