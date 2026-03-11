@@ -9,6 +9,13 @@
 
 ---
 
+## BLINK1.BAS
+
+Questo programma lampeggia un messaggio testuale alternandone il colore,
+sfruttando l'istruzione COLOR seguita dal numero di colore + 16
+
+---
+
 ## BLINK2.BAS, BLINK3.BAS e BLINK4.BAS 
 
 ### Descrizione
